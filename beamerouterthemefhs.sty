@@ -1,0 +1,19 @@
+\mode<presentation>
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{headline}{
+    \begin{tikzpicture}[remember picture, overlay, every node/.style={inner sep=0,outer sep=0}]
+    \node (fhslogo) at ($(current page.north east) - (.078\paperwidth, .095\paperheight)$) [anchor=north east] {\includegraphics[width=.058\textwidth]{logo-fhs-without-text.pdf}};
+    \end{tikzpicture}
+}
+
+\setbeamertemplate{footline}{
+    \begin{tikzpicture}[remember picture, overlay]
+    \node (date) at ($(current page.south west) + (.1\paperwidth, 0.5)$) {\insertdate};
+    \node (pagenumber) at ($(current page.south east) - (.1\paperwidth, -0.5)$) {\insertpagenumber};
+    \node (misc) at ($(date)!0.5!(pagenumber)$) {FH Salzburg $\cdot$ \insertshortinstitute\ $\cdot$ \insertshortauthor};
+    \end{tikzpicture}
+}
+
+\mode<all>
