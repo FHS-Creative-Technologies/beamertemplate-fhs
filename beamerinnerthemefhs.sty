@@ -3,30 +3,26 @@
 \RequirePackage{graphicx}
 \usetikzlibrary{calc, positioning}
 
+\setbeamertemplate{itemize items}[circle]
+
 \setbeamertemplate{title page}{
-  \setbeamertemplate{logo}{}
   \begin{tikzpicture}[remember picture, overlay,every node/.style={inner sep=0,outer sep=0}]
     \node (fhslogobackground) at (current page.south west) [anchor=south west] {\includegraphics[height=\paperheight]{logo-fhs-background.pdf}};
-    \node (fhslogo) at ($(current page.north west) + (.62\paperwidth, -.082\paperheight)$) [anchor=north west] {\includegraphics[width=.1\paperwidth]{logo-fhs.pdf}};
+    \node (fhslogotitlepage) at ($(current page.north west) + (.62\paperwidth, -.082\paperheight)$) [anchor=north west] {\includegraphics[width=.1\paperwidth]{logo-fhs.pdf}};
 
-    \node (titlenode) at ($(current page.north west) + (.08\paperwidth, -.346\paperheight)$) [anchor=north west, align=left, text width=.5\paperwidth] {\usebeamertemplate*{title}};
-    \node (subtitlenode) [anchor=north, below of=titlenode, text width=.5\paperwidth]{\usebeamertemplate*{subtitle}};
+    \node (titlenode) at ($(current page.north west) + (.08\paperwidth, -.346\paperheight)$) [anchor=north west, align=left, text width=.5\paperwidth] {\ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi};
+    \node (subtitlenode) [anchor=north, below of=titlenode, text width=.5\paperwidth]{\ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi};
   \end{tikzpicture}
 }
 
 \setbeamertemplate{title}{
   \raggedright%
-  \linespread{1.0}%
   \inserttitle%
-  \par%
-  \vspace*{0.5em}
 }
 
 \setbeamertemplate{subtitle}{
   \raggedright%
   \insertsubtitle%
-  \par%
-  \vspace*{0.5em}
 }
 
 % prevent the per-slide logo from appering at the title page
