@@ -21,8 +21,8 @@
 \setbeamertemplate{footline}{
   \usebeamerfont{footline}
   \begin{tikzpicture}[remember picture, overlay]
-    \node (date) at ($(current page.south west) + (.1\paperwidth, 0.5)$) {\insertdate};
-    \node (pagenumber) at ($(current page.south east) - (.1\paperwidth, -0.5)$) {\insertpagenumber};
+    \node (date) at ($(current page.south west) + (\fhs@frame@sidemargin, \fhs@frame@bottommargin)$) [anchor=south west] {\insertdate};
+    \node (pagenumber) at ($(current page.south east) - (\fhs@frame@sidemargin, -\fhs@frame@bottommargin)$) [anchor=south east] {\insertpagenumber};
     \node (misc) at ($(date)!0.5!(pagenumber)$) {FH Salzburg\ifx\beamer@shortinstitute\@empty\else\ $\cdot$\ \insertshortinstitute\fi\ifx\beamer@shortauthor\@empty\else\ $\cdot$\ \insertshortauthor\fi};
   \end{tikzpicture}
 }
