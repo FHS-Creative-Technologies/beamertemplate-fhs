@@ -37,4 +37,43 @@
   \usebeamertemplate{title page}
 }
 
+\define@key{beamerframe}{c}[true]{% centered
+  \beamer@frametopskip=0pt plus 1fill\relax%
+  \beamer@framebottomskip=0pt plus 1fill\relax%
+  \beamer@frametopskipautobreak=0pt plus .4\paperheight\relax%
+  \beamer@framebottomskipautobreak=0pt plus .6\paperheight\relax%
+  \def\beamer@initfirstlineunskip{}%
+}
+
+\providebool{fhs@standout}
+\define@key{beamerframe}{standout}[true]{%
+  \booltrue{fhs@standout}
+  \begingroup
+    \setkeys{beamerframe}{c}
+    \setkeys{beamerframe}{plain}
+    \setkeys{beamerframe}{noframenumbering}
+    \setbeamercolor{background canvas}{
+      use=palette primary,
+      bg=palette primary.bg
+    }
+    \setbeamercolor{local structure}{
+      fg=palette primary.fg
+    }
+    \usebeamercolor[fg]{palette primary}
+}
+
+\pretocmd{\beamer@reseteecodes}{%
+\ifbool{fhs@standout}{
+  \endgroup
+  \boolfalse{fhs@standout}
+}{}
+}{}{}
+
+\AtBeginEnvironment{beamer@frameslide}{
+  \ifbool{fhs@standout}{
+    \centering
+    \usebeamerfont{standout}
+  }{}
+}
+
 \mode<all>
