@@ -6,25 +6,25 @@
 
 \setbeamertemplate{frametitle}{
   \nointerlineskip
-  \begin{tikzpicture}[remember picture, overlay,every node/.style={inner sep=0,outer sep=0}]
-  \node (frametitleplaceholder) at ($(current page.north west) + (\fhs@frame@sidemargin, 0)$) {};
-  \node (frametitle) at (frametitleplaceholder |- fhslogo) [anchor=west] {\insertframetitle};
-  \end{tikzpicture}
-}
-
-\setbeamertemplate{headline}{
-  \begin{tikzpicture}[remember picture, overlay, every node/.style={inner sep=0,outer sep=0}]
-    \node (fhslogo) at ($(current page.north east) - (\fhs@frame@sidemargin, \fhs@frame@topmargin)$) [anchor=north east]{\includegraphics[width=.058\textwidth]{logo-fhs-without-text.pdf}};
-  \end{tikzpicture}
+  \begin{beamercolorbox}[wd=\paperwidth, ht=\fhs@frame@frametitleheight]{frametitle}
+    \usebeamerfont{frametitle}
+    \begin{tikzpicture}[overlay, every node/.style={inner sep=0,outer sep=0}]
+    \node (frametitleplaceholder) at ($(current page.north west) + (\fhs@frame@sidemargin, 0)$) {};
+    \node (fhslogo) at ($(current page.north east) - (\fhs@frame@sidemargin, \fhs@frame@topmargin)$) [anchor=north east]{\includegraphics[height=\fhs@frame@logoheight]{logo-fhs-without-text.pdf}};
+    \node (frametitle) at (frametitleplaceholder |- fhslogo) [anchor=west] {\insertframetitle};
+    \end{tikzpicture}
+  \end{beamercolorbox}
 }
 
 \setbeamertemplate{footline}{
-  \usebeamerfont{footline}
-  \begin{tikzpicture}[remember picture, overlay]
-    \node (date) at ($(current page.south west) + (\fhs@frame@sidemargin, \fhs@frame@bottommargin)$) [anchor=south west] {\insertdate};
-    \node (pagenumber) at ($(current page.south east) - (\fhs@frame@sidemargin, -\fhs@frame@bottommargin)$) [anchor=south east] {\insertframenumber};
-    \node (misc) at ($(date)!0.5!(pagenumber)$) {FH Salzburg\ifx\beamer@shortinstitute\@empty\else\ $\cdot$\ \insertshortinstitute\fi\ifx\beamer@shortauthor\@empty\else\ $\cdot$\ \insertshortauthor\fi};
-  \end{tikzpicture}
+  \begin{beamercolorbox}[wd=\paperwidth, ht=\fhs@frame@footlineheight]{footline}
+    \usebeamerfont{footline}
+    \begin{tikzpicture}[overlay]
+      \node (date) at ($(current page.south west) + (\fhs@frame@sidemargin, \fhs@frame@bottommargin)$) [anchor=south west] {\insertdate};
+      \node (pagenumber) at ($(current page.south east) - (\fhs@frame@sidemargin, -\fhs@frame@bottommargin)$) [anchor=south east] {\insertframenumber};
+      \node (misc) at ($(date)!0.5!(pagenumber)$) {FH Salzburg\ifx\beamer@shortinstitute\@empty\else\ $\cdot$\ \insertshortinstitute\fi\ifx\beamer@shortauthor\@empty\else\ $\cdot$\ \insertshortauthor\fi};
+    \end{tikzpicture}
+  \end{beamercolorbox}
 }
 
 \mode<all>
