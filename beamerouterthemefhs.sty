@@ -20,9 +20,9 @@
   \begin{beamercolorbox}[wd=\paperwidth, ht=\fhs@frame@footlineheight]{footline}
     \usebeamerfont{footline}
     \begin{tikzpicture}[overlay]
-      \node (date) at ($(current page.south west) + (\fhs@frame@sidemargin, \fhs@frame@bottommargin)$) [anchor=south west] {\insertdate};
-      \node (pagenumber) at ($(current page.south east) - (\fhs@frame@sidemargin, -\fhs@frame@bottommargin)$) [anchor=south east] {\insertframenumber};
-      \node (misc) at ($(date)!0.5!(pagenumber)$) {FH Salzburg\ifx\beamer@shortinstitute\@empty\else\ $\cdot$\ \insertshortinstitute\fi\ifx\beamer@shortauthor\@empty\else\ $\cdot$\ \insertshortauthor\fi};
+      \node (date) at ($(current page.south west) + (\fhs@frame@sidemargin, \fhs@frame@bottommargin)$) [anchor=west] {\insertdate};
+      \node (pagenumber) at ($(current page.south east) - (\fhs@frame@sidemargin, -\fhs@frame@bottommargin)$) [anchor=east, text width=2cm, align=right] {\insertframenumber};
+      \node (misc) at ($(date.west)!0.5!(pagenumber.east)$) {FH Salzburg\ifx\beamer@shortinstitute\@empty\else\ $\cdot$\ \insertshortinstitute\fi\ifx\beamer@shortauthor\@empty\else\ $\cdot$\ \insertshortauthor\fi};
     \end{tikzpicture}
   \end{beamercolorbox}
 }
