@@ -39,6 +39,16 @@
 \useinnertheme{fhs}
 \useoutertheme{fhs}
 
+\makeatletter
+\AtEndPreamble{
+  \hypersetup{
+    colorlinks=true,
+    allcolors=fhsdarkgrey,
+    breaklinks
+  }
+}
+\makeatother
+
 \setbeamertemplate{navigation symbols}{}
 
 \mode<all>
