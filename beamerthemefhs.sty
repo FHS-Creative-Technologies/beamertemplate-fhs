@@ -1,5 +1,11 @@
-% Many things are inspired from
-% https://github.com/matze/mtheme/
+% Copyright 2023 Andreas Bilke.
+%
+% Except where otherwise noted, this work "beamerfhs" by Andreas Bilke
+% is licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+% It is partially based on code from the metropolis theme by Matthias Vogelgesang
+% and the LaTeX community (https://github.com/matze/mtheme/) licensed
+% under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 \ProvidesPackage{beamerthemefhs}
 
@@ -12,6 +18,41 @@
     every picture/.append style={remember picture}
 }
 \usepackage{xcolor}
+
+\RequirePackage{etoolbox}
+\RequirePackage{xstring}
+\RequirePackage{ccicons}
+
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+    family=BEAMERFHS,
+    prefix=BEAMERFHS@
+}
+\DeclareStringOption[none]{license}
+
+\ProcessKeyvalOptions*
+
+\RequirePackage{xspace}
+\IfStrEq{\BEAMERFHS@license}{ccby}{
+    \newcommand{\BEAMERFHSlicensename}{CC BY 4.0\xspace}
+    \newcommand{\BEAMERFHSlicenseurl}{\url{https://creativecommons.org/licenses/by/4.0/}\xspace}
+    \newcommand{\BEAMERFHSlicenseicons}{\ccby\xspace}
+}{}
+\IfStrEq{\BEAMERFHS@license}{ccbysa}{
+    \newcommand{\BEAMERFHSlicensename}{CC BY-SA 4.0\xspace}
+    \newcommand{\BEAMERFHSlicenseurl}{\url{https://creativecommons.org/licenses/by-sa/4.0/}\xspace}
+    \newcommand{\BEAMERFHSlicenseicons}{\ccbysa\xspace}
+}{}
+
+\BeforeBeginEnvironment{coverpages}{
+    \IfStrEq{\BEAMERFHS@license}{none}{}{
+        \ifdef{\@author}{}{
+            \PackageError{exam-fhs}{A CC license was choosen,\MessageBreak but no \protect\author\space was specified}{
+                An author must be given for a correct CC attribution
+            }
+        }
+    }
+}
 
 \usepackage[autostyle, german=guillemets, austrian=guillemets]{csquotes}
 
