@@ -1,6 +1,6 @@
 # Installation
 
-Link/copy the `beamertemplate-fhs` folder to `$TEXMF/tex/latex`.
+Link/copy the `beamertheme-fhs` folder to `$TEXMF/tex/latex`.
 
 # Usage
 
