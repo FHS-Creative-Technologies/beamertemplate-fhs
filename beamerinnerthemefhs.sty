@@ -44,6 +44,12 @@
   \insertsubtitle%
 }
 
+\setbeamertemplate{footnote}{%
+  \parindent 0em\noindent%
+  \raggedright
+  \usebeamercolor{footnote}\hbox to 0.8em{\hfil\insertfootnotemark}\insertfootnotetext\par%
+}
+
 % prevent the per-slide logo from appering at the title page
 \def\maketitle{%
   \ifbeamer@inframe
