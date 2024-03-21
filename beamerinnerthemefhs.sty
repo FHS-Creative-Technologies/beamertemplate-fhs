@@ -44,9 +44,20 @@
   \insertsubtitle%
 }
 
+% Disable foot note counter on occasions where needed.
+% Taken from https://brandonrozek.com/blog/latex-footnote-no-count/
+\newcommand\blfootnote[1]{
+    \begingroup
+    \renewcommand\thefootnote{}\footnote{#1}
+    \addtocounter{footnote}{-1}
+    \endgroup
+}
+
+
 \setbeamertemplate{footnote}{%
   \parindent 0em\noindent%
   \raggedright
+  \tiny
   \usebeamercolor{footnote}\hbox to 0.8em{\hfil\insertfootnotemark}\insertfootnotetext\par%
 }
 
